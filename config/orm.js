@@ -52,7 +52,7 @@ const orm = {
     insertOne: (table, columns, values, cb) => {
         const queryString = `INSERT INTO ${table} (${columns.toString()}) VALUES (${printQuestionMarks(values.length)});`;
 
-        connection.query(queryString, (err, result) => {
+        connection.query(queryString, values, (err, result) => {
             if (err) throw err;
 
             cb(result)
